@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://13nb6pv53kou"]
+
+[ext_resource type="Script" path="res://player/controls/Controls.gd" id="1_glofk"]
+
+[node name="Controls" type="Node" groups=["controls"]]
+script = ExtResource("1_glofk")

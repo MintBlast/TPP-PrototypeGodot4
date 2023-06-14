@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://uo1hdbbkuoex"]
+
+[ext_resource type="Script" path="res://mechanics/interaction/light_me_up.gd" id="1_3tmoe"]
+[ext_resource type="PackedScene" uid="uid://dhrxgoepnje2n" path="res://mechanics/interaction/Interactable.tscn" id="2_fkogy"]
+[ext_resource type="AudioStream" uid="uid://hh4j3bc5d6t4" path="res://Detect Test Sound.wav" id="3_vtuer"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2veru"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekjpu"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qfh5q"]
+_surfaces = [{
+"aabb": AABB(-0.514434, -0.514434, -0.514434, 1.02887, 1.02888, 1.02888),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 171, 170, 42, 63, 0, 0, 0, 0, 171, 170, 170, 62, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 0, 171, 170, 170, 62, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 128, 63, 171, 170, 42, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 128, 63, 171, 170, 170, 62, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 128, 63, 171, 170, 42, 63, 0, 0, 128, 63, 171, 170, 42, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63),
+"format": 4119,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 4, 0, 2, 0, 2, 0, 4, 0, 6, 0, 1, 0, 5, 0, 3, 0, 3, 0, 5, 0, 7, 0, 8, 0, 12, 0, 10, 0, 10, 0, 12, 0, 14, 0, 9, 0, 13, 0, 11, 0, 11, 0, 13, 0, 15, 0, 16, 0, 20, 0, 18, 0, 18, 0, 20, 0, 22, 0, 17, 0, 21, 0, 19, 0, 19, 0, 21, 0, 23, 0),
+"primitive": 3,
+"vertex_count": 24,
+"vertex_data": PackedByteArray(238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 255, 127, 255, 127, 255, 255, 255, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 255, 255, 255, 255, 0, 0, 255, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 255, 127, 255, 127, 255, 255, 255, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 255, 255, 255, 255, 0, 0, 255, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 255, 127, 255, 127, 255, 255, 255, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 255, 255, 255, 255, 0, 0, 255, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 255, 127, 255, 127, 255, 255, 255, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 255, 255, 255, 255, 0, 0, 255, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 255, 255, 0, 128, 255, 255, 255, 255, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 0, 0, 0, 128, 255, 127, 255, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 255, 255, 0, 128, 255, 255, 255, 255, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 0, 0, 0, 128, 255, 127, 255, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 255, 255, 0, 128, 255, 255, 255, 255, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 0, 0, 0, 128, 255, 127, 255, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 255, 255, 0, 128, 255, 255, 255, 255, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 0, 0, 0, 128, 255, 127, 255, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 63, 0, 128, 255, 255, 0, 0, 255, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 63, 0, 128, 0, 0, 255, 255, 255, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 63, 0, 128, 255, 255, 0, 0, 255, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 63, 0, 128, 0, 0, 255, 255, 255, 191, 238, 177, 3, 63, 238, 177, 3, 63, 238, 177, 3, 191, 0, 128, 255, 255, 0, 0, 255, 191, 238, 177, 3, 191, 238, 177, 3, 191, 238, 177, 3, 191, 0, 128, 0, 0, 255, 255, 255, 191, 238, 177, 3, 191, 238, 177, 3, 63, 238, 177, 3, 191, 0, 128, 255, 255, 0, 0, 255, 191, 238, 177, 3, 63, 238, 177, 3, 191, 238, 177, 3, 191, 0, 128, 0, 0, 255, 255, 255, 191)
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voys6"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iwno5"]
+
+[node name="LightMeUp" type="RigidBody3D"]
+script = ExtResource("1_3tmoe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2veru")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_ekjpu")
+
+[node name="Outline" type="MeshInstance3D" parent="MeshInstance3D"]
+visible = false
+mesh = SubResource("ArrayMesh_qfh5q")
+surface_material_override/0 = SubResource("StandardMaterial3D_voys6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_iwno5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.172549, 0, 1, 1)
+light_energy = 10.0
+
+[node name="Interactable" parent="." instance=ExtResource("2_fkogy")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 555.0
+offset_top = 559.0
+offset_right = 624.0
+offset_bottom = 585.0
+text = "Interact? [E]"
+
+[node name="TriggerSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_vtuer")
+
+[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+
+[editable path="Interactable"]

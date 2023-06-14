@@ -1,0 +1,3 @@
+This folder uses areas for interaction
+
+Use this as a template

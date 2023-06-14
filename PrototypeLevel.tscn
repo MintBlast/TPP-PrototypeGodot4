@@ -1,0 +1,160 @@
+[gd_scene load_steps=21 format=3 uid="uid://ciu86c51jimpl"]
+
+[ext_resource type="Texture2D" uid="uid://60nucaihxj5n" path="res://Textures/Green/texture_02.png" id="1_882vc"]
+[ext_resource type="Texture2D" uid="uid://cw0igqgc38vyu" path="res://Textures/Red/texture_02.png" id="2_vg2bt"]
+[ext_resource type="Texture2D" uid="uid://bbf6spy47pc6e" path="res://Textures/Light/texture_07.png" id="3_f0ppr"]
+[ext_resource type="Texture2D" uid="uid://cktxmwhsokcdl" path="res://Textures/Light/texture_08.png" id="4_odxr8"]
+[ext_resource type="PackedScene" uid="uid://uo1hdbbkuoex" path="res://mechanics/interaction/light_me_up.tscn" id="6_idvsl"]
+[ext_resource type="PackedScene" uid="uid://cbybw6prbm7bg" path="res://mechanics/interaction/Inspectable.tscn" id="7_4kl6k"]
+[ext_resource type="PackedScene" uid="uid://t5bfrdfi6dlt" path="res://player/playerv3.tscn" id="7_r10u8"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+albedo_texture = ExtResource("1_882vc")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="2"]
+albedo_texture = ExtResource("2_vg2bt")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5xhv"]
+albedo_texture = ExtResource("3_f0ppr")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="3"]
+albedo_color = Color(0, 0.203922, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxqga"]
+albedo_texture = ExtResource("4_odxr8")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_color = Color(0.321569, 0.976471, 0.854902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7emm4"]
+albedo_texture = ExtResource("3_f0ppr")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="5"]
+
+[sub_resource type="BoxShape3D" id="6"]
+
+[sub_resource type="Animation" id="7"]
+resource_name = "PlatformAnim"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(9.42645, 5, 23), Vector3(20.4265, 5, 23), Vector3(9.42645, 5, 23)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16kmm"]
+_data = {
+"PlatformAnim": SubResource("7")
+}
+
+[sub_resource type="Environment" id="Environment_evym6"]
+background_energy_multiplier = 5.0
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_mlsxs"]
+
+[node name="PrototypeLevel" type="Node3D"]
+
+[node name="CSGCombiner" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="CSGCombiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(100, 1, 100)
+material = SubResource("1")
+
+[node name="RedPlat" type="CSGBox3D" parent="CSGCombiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 4)
+size = Vector3(6, 1, 10)
+material = SubResource("2")
+
+[node name="WhitePlat" type="CSGBox3D" parent="CSGCombiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, 1)
+size = Vector3(8, 1, 8)
+material = SubResource("StandardMaterial3D_j5xhv")
+
+[node name="BluePlat" type="CSGBox3D" parent="CSGCombiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.5, 15)
+size = Vector3(14, 3, 16)
+material = SubResource("3")
+
+[node name="WhitePlat2" type="CSGBox3D" parent="CSGCombiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5719, 3.5, 22)
+size = Vector3(20, 5, 20)
+material = SubResource("StandardMaterial3D_uxqga")
+
+[node name="Pool" type="CSGBox3D" parent="CSGCombiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 0)
+operation = 2
+size = Vector3(12, 1, 12)
+material = SubResource("4")
+
+[node name="WhitePlat3" type="CSGBox3D" parent="CSGCombiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4, 3.5, 23)
+size = Vector3(10, 5, 10)
+material = SubResource("StandardMaterial3D_7emm4")
+
+[node name="Platform" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.42645, 5, 23)
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00716209, 0, 0)
+mesh = SubResource("5")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00922966, 0, 0)
+shape = SubResource("6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
+root_node = NodePath("../..")
+reset_on_save = false
+playback_process_mode = 0
+libraries = {
+"": SubResource("AnimationLibrary_16kmm")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_evym6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.1, 0)
+sky_mode = 2
+
+[node name="LightMeUp" parent="." instance=ExtResource("6_idvsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 2.6, 0)
+
+[node name="LightMeUp2" parent="." instance=ExtResource("6_idvsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4, 4.9, 6.7)
+
+[node name="Inspectable" parent="." node_paths=PackedStringArray("inspectcam", "playercam", "player") instance=ExtResource("7_4kl6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -5.1)
+inspectcam = NodePath("../playerv3/inspectcam")
+playercam = NodePath("../playerv3/camera_mount/playercam")
+player = NodePath("../playerv3")
+
+[node name="playerv3" parent="." instance=ExtResource("7_r10u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="AnimationTree" parent="playerv3/Skin/mixamo_base" index="2"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mlsxs")
+
+[editable path="playerv3"]
+[editable path="playerv3/ControllableCamera"]
+[editable path="playerv3/PlayerInteractor"]
