@@ -21,7 +21,7 @@ func _ready():
 	
 	distance = playercam.transform.origin.z
 	
-	call_deferred("_initialize_zoom_sale")
+	call_deferred("_initialize_zoom_scale")
 
 func _initialize_zoom_scale():
 	var initial_zoom_scale := (distance - min_distance) / (max_distance - min_distance)

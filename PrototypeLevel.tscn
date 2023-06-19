@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ciu86c51jimpl"]
+[gd_scene load_steps=20 format=3 uid="uid://ciu86c51jimpl"]
 
 [ext_resource type="Texture2D" uid="uid://60nucaihxj5n" path="res://Textures/Green/texture_02.png" id="1_882vc"]
 [ext_resource type="Texture2D" uid="uid://cw0igqgc38vyu" path="res://Textures/Red/texture_02.png" id="2_vg2bt"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cktxmwhsokcdl" path="res://Textures/Light/texture_08.png" id="4_odxr8"]
 [ext_resource type="PackedScene" uid="uid://uo1hdbbkuoex" path="res://mechanics/interaction/light_me_up.tscn" id="6_idvsl"]
 [ext_resource type="PackedScene" uid="uid://cbybw6prbm7bg" path="res://mechanics/interaction/Inspectable.tscn" id="7_4kl6k"]
-[ext_resource type="PackedScene" uid="uid://t5bfrdfi6dlt" path="res://player/playerv3.tscn" id="7_r10u8"]
+[ext_resource type="PackedScene" uid="uid://cygg8gkq0llto" path="res://player/playerv2.tscn" id="7_8q5cc"]
 
 [sub_resource type="StandardMaterial3D" id="1"]
 albedo_texture = ExtResource("1_882vc")
@@ -67,8 +67,6 @@ ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_mlsxs"]
 
 [node name="PrototypeLevel" type="Node3D"]
 
@@ -145,16 +143,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4, 4.9, 6.7)
 
 [node name="Inspectable" parent="." node_paths=PackedStringArray("inspectcam", "playercam", "player") instance=ExtResource("7_4kl6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -5.1)
-inspectcam = NodePath("../playerv3/inspectcam")
-playercam = NodePath("../playerv3/camera_mount/playercam")
-player = NodePath("../playerv3")
+inspectcam = NodePath("../playerv2/inspectcam")
+playercam = NodePath("../playerv2/camera_mount/playercam")
+player = NodePath("../playerv2")
 
-[node name="playerv3" parent="." instance=ExtResource("7_r10u8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="playerv2" parent="." instance=ExtResource("7_8q5cc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 
-[node name="AnimationTree" parent="playerv3/Skin/mixamo_base" index="2"]
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mlsxs")
-
-[editable path="playerv3"]
-[editable path="playerv3/ControllableCamera"]
-[editable path="playerv3/PlayerInteractor"]
+[editable path="playerv2"]
+[editable path="playerv2/PlayerInteractor"]

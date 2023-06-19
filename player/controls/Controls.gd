@@ -4,7 +4,7 @@ class_name Controls
 
 @export var min_pitch = -90
 @export var max_pitch = 75
-@export var zoom_step = 0.05
+@export var zoom_step = 0.5
 @export var horizontal_mouse_sens = 0.5
 @export var vertical_mouse_sens = 0.5
 @export var controller_sensitivity = 0.6
@@ -17,6 +17,7 @@ var _zoom_scale: float = 0
 var _is_capturing: bool = false
 var _is_jumping: bool = false
 var _is_sprinting: bool = false
+var _is_crouching: bool = false
 var _is_interacting: bool = false
 var _is_cancelling: bool = false
 
@@ -59,10 +60,28 @@ func _input(event):
 		_cam_rot.y = clamp(_cam_rot.y, min_pitch, max_pitch)
 	
 	if _is_capturing:
-		if Input.is_action_pressed("zoom_in"):
+		if Input.is_action_just_pressed("zoom_in"):
 			_zoom_scale = clamp(_zoom_scale - zoom_step, 0, 1)
-		if Input.is_action_pressed("zoom_out"):
+		if Input.is_action_just_pressed("zoom_out"):
 			_zoom_scale = clamp(_zoom_scale + zoom_step, 0, 1)
+
+func get_movement_vector():
+	return _move_vec
+
+func is_jumping():
+	return _is_jumping
+
+func is_sprinting():
+	return _is_sprinting
+
+func is_crouching():
+	return _is_crouching
+
+func is_interacting():
+	return _is_interacting
+
+func is_cancelling():
+	return _is_cancelling
 
 func set_zoom_scale(zoom_scale):
 	_zoom_scale = zoom_scale

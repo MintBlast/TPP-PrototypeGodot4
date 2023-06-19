@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name Player
+
 # THIS IS THE IDEAL PLAYER CONTROLLER - USE THIS AS TEMPLATE AND DON'T ADD ANYTHING ELSE TO IT!!
 # MODIFY V3 AND OTHER VARIANTS PRECEDED BY IT INSTEAD!
 # ANY MODIFICATIONS WILL BE ADDED AS A COMMENT BELOW THIS LINE!
@@ -74,7 +76,7 @@ func _physics_process(delta):
 		ACCEL = ACCEL_AIR
 		velocity.y = JUMP_VELOCITY 
 	
-	if Input.is_action_pressed("run"):
+	if Input.is_action_pressed("sprint"):
 		SPEED = run_speed
 		running = true
 	else:

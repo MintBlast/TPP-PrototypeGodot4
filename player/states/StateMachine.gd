@@ -2,6 +2,8 @@ extends Node
 
 class_name StateMachine
 
+signal transitioned(state_path)
+
 @export var character : CharacterBody3D
 @export var current_state : State
 
