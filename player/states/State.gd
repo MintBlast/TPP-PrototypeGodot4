@@ -21,6 +21,22 @@ func exit():
 	if parent.is_in_group("state"):
 		parent.exit()
 
+func input(event):
+	if parent.is_in_group("state"):
+		parent.input(event)
+
+func unhandled_input(event):
+	if parent.is_in_group("state"):
+		parent.unhandled_input(event)
+
+func process(delta):
+	if parent.is_in_group("state"):
+		parent.process(delta)
+
+func physics_process(delta):
+	if parent.is_in_group("state"):
+		parent.physics_process(delta)
+
 func _get_state_machine(node):
 	if !node:
 		return null

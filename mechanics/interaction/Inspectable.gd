@@ -30,9 +30,9 @@ func _process(delta):
 		prev_mouse_position = next_mouse_position
 
 func inspect():
-	if playercam.current == true:
-		playercam.clear_current(true)
-		inspectcam.current == true
+	#if playercam.current == true:
+	#	playercam.clear_current(true)
+	#	inspectcam.current == true
 	
 	if Input.is_action_just_pressed("rotate"):
 		rotating = true
@@ -50,7 +50,7 @@ func _on_interactable_interacted(interactor):
 	inspect()
 	indicate.text = "Leave? [V]"
 	
-	player.MOVEMENT
+	#player.MOVEMENT
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
@@ -65,6 +65,6 @@ func _on_interactable_cancel(interactor):
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	if inspectcam.current == true:
-		inspectcam.clear_current(true)
-		playercam.current == true
+	#if inspectcam.current == true:
+	#	inspectcam.clear_current(true)
+	#	playercam.current == true

@@ -1,23 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://cv36jrkdygjxa"]
+[gd_scene load_steps=7 format=3 uid="uid://dkyhnr2ymsxv6"]
 
 [ext_resource type="Script" path="res://player/states/StateMachine.gd" id="1_5v8kd"]
-[ext_resource type="Script" path="res://player/states/Idle.gd" id="2_c8uvb"]
+[ext_resource type="Script" path="res://player/states/OnGround.gd" id="2_gbw1j"]
 [ext_resource type="Script" path="res://player/states/Interact.gd" id="3_8q02x"]
 [ext_resource type="Script" path="res://player/states/Walk.gd" id="4_0a34j"]
 [ext_resource type="Script" path="res://player/states/Run.gd" id="5_wiqaf"]
-[ext_resource type="Script" path="res://player/states/Jump.gd" id="6_8axw7"]
 
-[node name="StateMachine" type="Node" node_paths=PackedStringArray("character", "current_state")]
+[sub_resource type="GDScript" id="GDScript_x25xn"]
+script/source = "extends State
+
+class_name JumpState
+
+@export var idle_state : State
+
+func state_process(delta):
+	if character.is_on_floor():
+		next_state = idle_state
+"
+
+[node name="StateMachine" type="Node"]
 script = ExtResource("1_5v8kd")
-character = NodePath("..")
-current_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="."]
-script = ExtResource("2_c8uvb")
+script = ExtResource("2_gbw1j")
 
 [node name="Interact" type="Node" parent="Idle"]
 script = ExtResource("3_8q02x")
-can_move = false
 
 [node name="Walk" type="Node" parent="."]
 script = ExtResource("4_0a34j")
@@ -26,4 +34,4 @@ script = ExtResource("4_0a34j")
 script = ExtResource("5_wiqaf")
 
 [node name="Jump" type="Node" parent="."]
-script = ExtResource("6_8axw7")
+script = SubResource("GDScript_x25xn")

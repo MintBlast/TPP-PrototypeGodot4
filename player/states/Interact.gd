@@ -7,4 +7,5 @@ func state_input(event : InputEvent):
 		leave()
 
 func leave():
-	next_state = idle_state
+	pass
+	#next_state = idle_state

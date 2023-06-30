@@ -35,12 +35,13 @@ func _physics_process(delta):
 		
 		#var H_ROTATION = global_transform.basis.get_euler().y
 		var dx = Input.get_action_strength("right") - Input.get_action_strength("left")
-		var dy = Input.get_action_strength("backward") - Input.get_action_strength("forward")
+		var dy = Input.get_action_strength("forward") - Input.get_action_strength("backward")
 		
 		_move_vec = Vector2(dx, -dy).normalized()
 	
 	_is_jumping = Input.is_action_just_pressed("jump")
 	_is_sprinting = Input.is_action_pressed("sprint")
+	_is_crouching = Input.is_action_pressed("crouch")
 	_is_interacting = Input.is_action_pressed("interact")
 	_is_cancelling = Input.is_action_pressed("uninteract")
 

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cktxmwhsokcdl" path="res://Textures/Light/texture_08.png" id="4_odxr8"]
 [ext_resource type="PackedScene" uid="uid://uo1hdbbkuoex" path="res://mechanics/interaction/light_me_up.tscn" id="6_idvsl"]
 [ext_resource type="PackedScene" uid="uid://cbybw6prbm7bg" path="res://mechanics/interaction/Inspectable.tscn" id="7_4kl6k"]
-[ext_resource type="PackedScene" uid="uid://cygg8gkq0llto" path="res://player/playerv2.tscn" id="7_8q5cc"]
+[ext_resource type="PackedScene" uid="uid://b7a8qqdqk3w3b" path="res://player/variants/playerv3.tscn" id="7_7dfcw"]
 
 [sub_resource type="StandardMaterial3D" id="1"]
 albedo_texture = ExtResource("1_882vc")
@@ -143,12 +143,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4, 4.9, 6.7)
 
 [node name="Inspectable" parent="." node_paths=PackedStringArray("inspectcam", "playercam", "player") instance=ExtResource("7_4kl6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -5.1)
-inspectcam = NodePath("../playerv2/inspectcam")
-playercam = NodePath("../playerv2/camera_mount/playercam")
-player = NodePath("../playerv2")
+inspectcam = NodePath("")
+playercam = NodePath("../playerv3/CamRoot/ControllableCamera/CameraMount/playercam")
+player = NodePath("../playerv3")
 
-[node name="playerv2" parent="." instance=ExtResource("7_8q5cc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+[node name="playerv3" parent="." instance=ExtResource("7_7dfcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[editable path="playerv2"]
-[editable path="playerv2/PlayerInteractor"]
+[editable path="playerv3"]
+[editable path="playerv3/CamRoot/ControllableCamera"]
+[editable path="playerv3/PlayerInteractor"]
