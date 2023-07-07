@@ -50,8 +50,6 @@ func _on_interactable_interacted(interactor):
 	inspect()
 	indicate.text = "Leave? [V]"
 	
-	#player.MOVEMENT
-	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 

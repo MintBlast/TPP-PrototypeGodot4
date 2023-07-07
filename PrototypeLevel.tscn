@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cktxmwhsokcdl" path="res://Textures/Light/texture_08.png" id="4_odxr8"]
 [ext_resource type="PackedScene" uid="uid://uo1hdbbkuoex" path="res://mechanics/interaction/light_me_up.tscn" id="6_idvsl"]
 [ext_resource type="PackedScene" uid="uid://cbybw6prbm7bg" path="res://mechanics/interaction/Inspectable.tscn" id="7_4kl6k"]
-[ext_resource type="PackedScene" uid="uid://b7a8qqdqk3w3b" path="res://player/variants/playerv3.tscn" id="7_7dfcw"]
+[ext_resource type="PackedScene" uid="uid://bw6lkud3ki0s0" path="res://player/variants/playerv3.tscn" id="7_7dfcw"]
 
 [sub_resource type="StandardMaterial3D" id="1"]
 albedo_texture = ExtResource("1_882vc")

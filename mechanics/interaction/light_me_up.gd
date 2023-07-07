@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+class_name NonInspectable
+
 @onready var omni_light_3d = $OmniLight3D
 @onready var indicate = $Control/Label
 @onready var trigger_sound = $TriggerSound

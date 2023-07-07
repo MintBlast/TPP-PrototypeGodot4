@@ -46,7 +46,6 @@ func _physics_process(delta):
 	_is_cancelling = Input.is_action_pressed("uninteract")
 
 func _input(event):
-	
 	if Input.is_action_just_pressed("ui_cancel"):
 		_is_capturing = !_is_capturing
 		
