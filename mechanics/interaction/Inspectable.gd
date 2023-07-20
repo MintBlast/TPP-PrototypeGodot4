@@ -23,6 +23,13 @@ func detectsound():
 	trigger_sound.play()
 
 func _process(delta):
+	
+	if Input.is_action_just_pressed("rotate"):
+		rotating = true
+		prev_mouse_position = get_viewport().get_mouse_position()
+	if Input.is_action_just_released("rotate"):
+		rotating = false
+	
 	if (rotating):
 		next_mouse_position = get_viewport().get_mouse_position()
 		rotate_y((next_mouse_position.x - prev_mouse_position.x) * .25 * delta)
@@ -30,15 +37,9 @@ func _process(delta):
 		prev_mouse_position = next_mouse_position
 
 func inspect():
-	#if playercam.current == true:
-	#	playercam.clear_current(true)
-	#	inspectcam.current == true
-	
-	if Input.is_action_just_pressed("rotate"):
-		rotating = true
-		prev_mouse_position = get_viewport().get_mouse_position()
-	if Input.is_action_just_released("rotate"):
-		rotating = false
+	if playercam.current == true:
+		playercam.clear_current(true)
+		inspectcam.current == true
 	
 
 func _on_interactable_focused(interactor):
@@ -51,7 +52,6 @@ func _on_interactable_interacted(interactor):
 	indicate.text = "Leave? [V]"
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
 
 func _on_interactable_unfocused(interactor):
 	unfocushighlight()
@@ -63,6 +63,6 @@ func _on_interactable_cancel(interactor):
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	#if inspectcam.current == true:
-	#	inspectcam.clear_current(true)
-	#	playercam.current == true
+	if inspectcam.current == true:
+		inspectcam.clear_current(true)
+		playercam.current == true

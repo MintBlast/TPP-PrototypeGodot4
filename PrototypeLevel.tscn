@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ciu86c51jimpl"]
+[gd_scene load_steps=22 format=3 uid="uid://ciu86c51jimpl"]
 
 [ext_resource type="Texture2D" uid="uid://60nucaihxj5n" path="res://Textures/Green/texture_02.png" id="1_882vc"]
 [ext_resource type="Texture2D" uid="uid://cw0igqgc38vyu" path="res://Textures/Red/texture_02.png" id="2_vg2bt"]
@@ -60,8 +60,17 @@ _data = {
 "PlatformAnim": SubResource("7")
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tjin5"]
+
+[sub_resource type="Sky" id="Sky_2cs1s"]
+sky_material = SubResource("ProceduralSkyMaterial_tjin5")
+
 [sub_resource type="Environment" id="Environment_evym6"]
-background_energy_multiplier = 5.0
+background_mode = 2
+sky = SubResource("Sky_2cs1s")
+sky_rotation = Vector3(0, 1.5708, 0)
+ambient_light_source = 3
+ambient_light_color = Color(0.631373, 0.631373, 0.631373, 0.976471)
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
@@ -132,8 +141,8 @@ libraries = {
 environment = SubResource("Environment_evym6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.1, 0)
-sky_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29068, 33.1, -54.3177)
+sky_mode = 1
 
 [node name="LightMeUp" parent="." instance=ExtResource("6_idvsl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 2.6, 0)
@@ -143,7 +152,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4, 4.9, 6.7)
 
 [node name="Inspectable" parent="." node_paths=PackedStringArray("inspectcam", "playercam", "player") instance=ExtResource("7_4kl6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -5.1)
-inspectcam = NodePath("")
+inspectcam = NodePath("../playerv3/CamRoot/InspectCamera/inspectcam")
 playercam = NodePath("../playerv3/CamRoot/ControllableCamera/CameraMount/playercam")
 player = NodePath("../playerv3")
 
@@ -152,4 +161,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [editable path="playerv3"]
 [editable path="playerv3/CamRoot/ControllableCamera"]
+[editable path="playerv3/CamRoot/InspectCamera"]
 [editable path="playerv3/PlayerInteractor"]
