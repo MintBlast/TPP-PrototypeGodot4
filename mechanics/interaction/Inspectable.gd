@@ -40,7 +40,6 @@ func inspect():
 	if playercam.current == true:
 		playercam.clear_current(true)
 		inspectcam.current == true
-	
 
 func _on_interactable_focused(interactor):
 	focushighlight()
@@ -50,6 +49,7 @@ func _on_interactable_focused(interactor):
 func _on_interactable_interacted(interactor):
 	inspect()
 	indicate.text = "Leave? [V]"
+	!player.has_movement()
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -62,6 +62,8 @@ func _on_interactable_cancel(interactor):
 	indicate.text = "Interact? [E]"
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	player.has_movement()
 	
 	if inspectcam.current == true:
 		inspectcam.clear_current(true)

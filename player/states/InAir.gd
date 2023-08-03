@@ -20,7 +20,7 @@ func enter():
 func process(delta):
 	_jump_cooldown_remaining = max(_jump_cooldown_remaining - delta, 0)
 	
-	if player.controls.is_jumping() && can_jump():
+	if player.controls.is_jumping() && can_jump() && player.is_on_floor():
 		state_machine.transition_to("InAir/Jumping")
 
 func physics_process(delta):

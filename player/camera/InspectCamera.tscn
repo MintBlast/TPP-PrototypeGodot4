@@ -1,9 +1,15 @@
-[gd_scene format=3 uid="uid://favnd86w4tx0"]
+[gd_scene load_steps=2 format=3 uid="uid://favnd86w4tx0"]
+
+[ext_resource type="Script" path="res://player/camera/InspectCamera.gd" id="1_e23f6"]
 
 [node name="InspectCamera" type="Node3D"]
+script = ExtResource("1_e23f6")
 
-[node name="inspectcam" type="Camera3D" parent="."]
+[node name="CameraMount" type="SpringArm3D" parent="."]
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="inspectcam" type="Camera3D" parent="CameraMount"]
+cull_mask = 1048573
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraMount/inspectcam"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 target_position = Vector3(0, 0, 3)

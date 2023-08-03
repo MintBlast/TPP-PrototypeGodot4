@@ -152,7 +152,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4, 4.9, 6.7)
 
 [node name="Inspectable" parent="." node_paths=PackedStringArray("inspectcam", "playercam", "player") instance=ExtResource("7_4kl6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -5.1)
-inspectcam = NodePath("../playerv3/CamRoot/InspectCamera/inspectcam")
+freeze = true
+inspectcam = NodePath("../playerv3/CamRoot/InspectCamera/CameraMount/inspectcam")
 playercam = NodePath("../playerv3/CamRoot/ControllableCamera/CameraMount/playercam")
 player = NodePath("../playerv3")
 

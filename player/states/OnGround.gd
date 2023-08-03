@@ -11,8 +11,8 @@ func process(delta):
 		state_machine.transition_to("OnGround/Walk")
 	elif !player.has_movement():
 		state_machine.transition_to("OnGround/Stopped")
-		if !player.has_movement() and player.controls.is_interacting():
-				state_machine.transition_to("OnGround/Stopped/Interacting")
+	elif player.controls.is_interacting():
+			state_machine.transition_to("OnGround/Interacting")
 	elif player.controls.is_crouching():
 		state_machine.transition_to("Crouching")
 	
