@@ -29,16 +29,18 @@ emission = Color(1, 1, 1, 1)
 
 [node name="Inspectable" type="RigidBody3D"]
 collision_layer = 3
-collision_mask = 3
+collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_6wfsi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
 mesh = SubResource("BoxMesh_rwp1l")
 surface_material_override/0 = SubResource("StandardMaterial3D_q22l6")
 
 [node name="Outline" type="MeshInstance3D" parent="MeshInstance3D"]
 visible = false
+layers = 2
 mesh = SubResource("ArrayMesh_ra4r6")
 surface_material_override/0 = SubResource("StandardMaterial3D_5v361")
 

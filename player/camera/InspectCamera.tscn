@@ -8,7 +8,7 @@ script = ExtResource("1_e23f6")
 [node name="CameraMount" type="SpringArm3D" parent="."]
 
 [node name="inspectcam" type="Camera3D" parent="CameraMount"]
-cull_mask = 1048573
+cull_mask = 1048574
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraMount/inspectcam"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

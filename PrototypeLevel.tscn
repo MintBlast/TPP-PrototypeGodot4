@@ -159,6 +159,7 @@ player = NodePath("../playerv3")
 
 [node name="playerv3" parent="." instance=ExtResource("7_7dfcw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 1
 
 [editable path="playerv3"]
 [editable path="playerv3/CamRoot/ControllableCamera"]
