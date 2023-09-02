@@ -11,15 +11,24 @@ class_name InspectCamera
 @onready var inspectcam = $CameraMount/inspectcam
 @onready var controls: Controls = get_tree().get_nodes_in_group("controls")[0]
 
+@onready var ray_cast_3d = $CameraMount/inspectcam/RayCast3D
+@onready var marker_3d = $CameraMount/inspectcam/Marker3D
+
+@onready var test_sound = $TestSound
+
+
+
 var _rot_h: float = 0
 var _rot_v: float = 0
 var distance: float = 0
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await get_parent().ready
 	
-	#distance = inspectcam.transform.origin.z
+	distance = inspectcam.transform.origin.z
 	
 	call_deferred("_initialize_zoom_scale")
 
@@ -28,15 +37,22 @@ func _initialize_zoom_scale():
 	controls.set_zoom_scale(initial_zoom_scale)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+func _process(delta):
+	if inspectcam.current == true:
+		distance = controls.get_zoom_scale() * (max_distance - min_distance) + min_distance
+		inspect_object()
 	#var cam_rot: Vector2 = controls.get_camera_rotation()
 	#_rot_h = cam_rot.x
 	#_rot_v = cam_rot.y
-	
-	#distance = controls.get_zoom_scale() * (max_distance - min_distance) + min_distance
 
-#func _physics_process(delta):
-	#camera_mount.rotation.y = lerpf(camera_mount.rotation.y, deg_to_rad(_rot_h), rotate_speed * delta)
+func _physics_process(delta):
+	camera_mount.rotation.y = lerpf(camera_mount.rotation.y, deg_to_rad(_rot_h), rotate_speed * delta)
 	#camera_mount.rotation.x = lerpf(camera_mount.rotation.x, deg_to_rad(_rot_v), rotate_speed * delta)
 	
 	#inspectcam.transform.origin.z = lerpf(inspectcam.transform.origin.z, distance, zoom_speed * delta)
+
+func inspect_object():
+	var collider = ray_cast_3d.get_collider()
+	if collider != null and collider is RigidBody3D:
+		print_debug("colliding with rigid body!")
+		test_sound.play()

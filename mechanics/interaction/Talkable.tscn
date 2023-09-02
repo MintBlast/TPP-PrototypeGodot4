@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1bn60vsibbd6"]
+
+[ext_resource type="PackedScene" uid="uid://d15qmn1h3m14a" path="res://NPC.glb" id="1_m4cs6"]
+[ext_resource type="PackedScene" uid="uid://dhrxgoepnje2n" path="res://mechanics/interaction/Interactable.tscn" id="2_3fw5h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mo0s3"]
+
+[node name="Talkable" type="Node3D"]
+
+[node name="NPC" parent="." instance=ExtResource("1_m4cs6")]
+
+[node name="Interactable" parent="." instance=ExtResource("2_3fw5h")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998809, 0)
+shape = SubResource("CapsuleShape3D_mo0s3")
+
+[editable path="Interactable"]

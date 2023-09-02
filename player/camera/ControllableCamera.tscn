@@ -6,8 +6,8 @@
 script = ExtResource("1_pq5p4")
 
 [node name="CameraMount" type="SpringArm3D" parent="."]
-spring_length = 3.0
+spring_length = 2.0
 
 [node name="playercam" type="Camera3D" parent="CameraMount"]
-transform = Transform3D(1, 5.96046e-08, -1.77636e-15, -5.96046e-08, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 4)
+transform = Transform3D(1, 5.96046e-08, -1.77635e-15, -5.96046e-08, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 4)
 current = true

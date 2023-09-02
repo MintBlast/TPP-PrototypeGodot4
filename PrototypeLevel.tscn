@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ciu86c51jimpl"]
+[gd_scene load_steps=25 format=3 uid="uid://ciu86c51jimpl"]
 
 [ext_resource type="Texture2D" uid="uid://60nucaihxj5n" path="res://Textures/Green/texture_02.png" id="1_882vc"]
 [ext_resource type="Texture2D" uid="uid://cw0igqgc38vyu" path="res://Textures/Red/texture_02.png" id="2_vg2bt"]
@@ -33,6 +33,18 @@ albedo_color = Color(0.321569, 0.976471, 0.854902, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7emm4"]
 albedo_texture = ExtResource("3_f0ppr")
 uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1oru5"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 0.627451)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b2y2e"]
+material = SubResource("StandardMaterial3D_1oru5")
+size = Vector3(12, 5, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_av2ol"]
+size = Vector3(12, 6, 12)
 
 [sub_resource type="BoxMesh" id="5"]
 
@@ -83,8 +95,8 @@ glow_enabled = true
 use_collision = true
 
 [node name="Ground" type="CSGBox3D" parent="CSGCombiner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-size = Vector3(100, 1, 100)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
+size = Vector3(100, 50, 100)
 material = SubResource("1")
 
 [node name="RedPlat" type="CSGBox3D" parent="CSGCombiner"]
@@ -107,16 +119,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5719, 3.5, 22)
 size = Vector3(20, 5, 20)
 material = SubResource("StandardMaterial3D_uxqga")
 
-[node name="Pool" type="CSGBox3D" parent="CSGCombiner"]
+[node name="Crater" type="CSGBox3D" parent="CSGCombiner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 0)
 operation = 2
 size = Vector3(12, 1, 12)
+material = SubResource("4")
+
+[node name="Pool" type="CSGBox3D" parent="CSGCombiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -2, -17.5704)
+visible = false
+operation = 2
+size = Vector3(12, 6, 12)
 material = SubResource("4")
 
 [node name="WhitePlat3" type="CSGBox3D" parent="CSGCombiner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4, 3.5, 23)
 size = Vector3(10, 5, 10)
 material = SubResource("StandardMaterial3D_7emm4")
+
+[node name="Water" type="Area3D" parent="CSGCombiner"]
+visible = false
+collision_layer = 32
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CSGCombiner/Water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -2, -17.5)
+mesh = SubResource("BoxMesh_b2y2e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner/Water"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -2, -17.6)
+shape = SubResource("BoxShape3D_av2ol")
 
 [node name="Platform" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.42645, 5, 23)
@@ -157,11 +188,18 @@ inspectcam = NodePath("../playerv3/CamRoot/InspectCamera/CameraMount/inspectcam"
 playercam = NodePath("../playerv3/CamRoot/ControllableCamera/CameraMount/playercam")
 player = NodePath("../playerv3")
 
+[node name="Inspectable2" parent="." node_paths=PackedStringArray("inspectcam", "playercam", "player") instance=ExtResource("7_4kl6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4197, 2.2, -11.7406)
+freeze = true
+inspectcam = NodePath("../playerv3/CamRoot/InspectCamera/CameraMount/inspectcam")
+playercam = NodePath("../playerv3/CamRoot/ControllableCamera/CameraMount/playercam")
+player = NodePath("../playerv3")
+
 [node name="playerv3" parent="." instance=ExtResource("7_7dfcw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 1
 
 [editable path="playerv3"]
+[editable path="playerv3/Skin/PlayerInteractor"]
 [editable path="playerv3/CamRoot/ControllableCamera"]
 [editable path="playerv3/CamRoot/InspectCamera"]
-[editable path="playerv3/PlayerInteractor"]

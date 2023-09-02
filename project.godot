@@ -18,12 +18,17 @@ config/icon="res://icon.svg"
 [autoload]
 
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+
+[dotnet]
+
+project/assembly_name="Tpp Subprototype"
 
 [editor]
 
@@ -33,7 +38,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
@@ -123,10 +128,10 @@ crouch={
 ]
 }
 
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogue/maintest.dialogue", "res://Dialogue/Test.dialogue")
+
 [layer_names]
 
 3d_physics/layer_2="interactable"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"

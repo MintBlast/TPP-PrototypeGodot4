@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://favnd86w4tx0"]
+[gd_scene load_steps=3 format=3 uid="uid://favnd86w4tx0"]
 
 [ext_resource type="Script" path="res://player/camera/InspectCamera.gd" id="1_e23f6"]
+[ext_resource type="AudioStream" uid="uid://clsa77o7nmfvn" path="res://AhaSound.mp3" id="2_qotoi"]
 
 [node name="InspectCamera" type="Node3D"]
 script = ExtResource("1_e23f6")
+
+[node name="TestSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_qotoi")
 
 [node name="CameraMount" type="SpringArm3D" parent="."]
 
@@ -13,3 +17,8 @@ cull_mask = 1048574
 [node name="RayCast3D" type="RayCast3D" parent="CameraMount/inspectcam"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 target_position = Vector3(0, 0, 3)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="Marker3D" type="Marker3D" parent="CameraMount/inspectcam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.6)
